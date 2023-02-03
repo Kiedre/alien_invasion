@@ -245,7 +245,7 @@ class AlienInvasion:
             self.stats.ships_left -= 1
             self.sb.prep_ships()
 
-            # Get rid of any remaining bullets and aliens.
+            # Get rid of any remaining bullets and aliens.怎么走代理
             self.bullets.empty()
             self.aliens.empty()
 
@@ -274,3 +274,4 @@ if __name__ == '__main__':
     ai = AlienInvasion()
     ai.run_game()
     print("Hi")
+    print("Another try")
