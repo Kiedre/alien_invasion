@@ -22,16 +22,27 @@ class Alien(Sprite):
         self.rect.y = self.rect.height
 
         # Store the alien's exact horizontal position
+        self.scale = random.randint(50, 200)
         self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+        self.x_stable = None
 
-    def check_edges(self):
-        """Return True if alien is at edge of screen."""
-        screen_rect = self.screen.get_rect()
-        return (self.rect.right >= screen_rect.right) or (self.rect.left <= 0)
+    # def check_edges(self):
+    #     """Return True if alien is at edge of screen."""
+    #     screen_rect = self.screen.get_rect()
+    #     return (self.rect.right >= screen_rect.right) or (self.rect.left <= 0)
+
+    # def move_down(self):
+    #     """Move the alien down."""
+    #     self.y += self.settings.alien_speed
 
     def update(self):
-        """Move the alien to the right."""
-        self.x += self.settings.alien_speed * self.settings.fleet_direction
+        """Move the alien in sin function."""
+        if self.x_stable is None:
+            self.x_stable = float(self.rect.x)
+        self.y += 0.3 * self.settings.alien_speed
+        self.x = float(self.x_stable) + self.scale * math.cos(0.03 * self.y)
         self.rect.x = self.x
+        self.rect.y = self.y
 
 
